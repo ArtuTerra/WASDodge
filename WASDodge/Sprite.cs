@@ -9,8 +9,9 @@ using System.Threading.Tasks;
 
 namespace WASDodge
 {
-    internal class Sprite { 
-    
+    internal class Sprite
+    {
+
         public Texture2D texture;
         public Vector2 position;
 
@@ -18,6 +19,11 @@ namespace WASDodge
         {
             this.texture = texture;
             this.position = position;
+        }
+
+        public virtual void Update()
+        {
+
         }
     }
 }

@@ -9,7 +9,7 @@ namespace WASDodge
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
 
-        ScaledSprite sprite;
+        Movingsprite sprite;
 
         public Game1()
         {
@@ -30,7 +30,7 @@ namespace WASDodge
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
             Texture2D texture = Content.Load<Texture2D>("Spritesheet");
-            sprite = new ScaledSprite(texture, Vector2.Zero);
+            sprite = new Movingsprite(texture, Vector2.Zero, 1f);
 
             // TODO: use this.Content to load your game content here
         }
@@ -40,7 +40,7 @@ namespace WASDodge
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            // TODO: Add your update logic here
+            sprite.Update();
 
             base.Update(gameTime);
         }
