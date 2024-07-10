@@ -9,7 +9,8 @@ namespace WASDodge
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
 
-        Texture2D texture;
+        ScaledSprite sprite;
+
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -27,7 +28,10 @@ namespace WASDodge
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
-            texture = Content.Load<Texture2D>("green1010");
+
+            Texture2D texture = Content.Load<Texture2D>("Spritesheet");
+            sprite = new ScaledSprite(texture, Vector2.Zero);
+
             // TODO: use this.Content to load your game content here
         }
 
@@ -48,9 +52,10 @@ namespace WASDodge
             // TODO: Add your drawing code here
             _spriteBatch.Begin(samplerState: SamplerState.PointClamp);
             
-            _spriteBatch.Draw(texture, new Rectangle(100, 100, 100, 200), Color.Red); 
+            _spriteBatch.Draw(sprite.texture, sprite.Rect, Color.White);
 
             _spriteBatch.End();
+
             base.Draw(gameTime);
         }
     }
